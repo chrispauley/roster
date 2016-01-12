@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+
+	<xsd:annotation>
+		<xsd:documentation>
+			My Team Lacrosse
+			http://myteam.com/roster/info.html
+        </xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:element name="team" type="teamType"></xsd:element>
+	
+	<xsd:complexType name="teamType">
+	
+		<xsd:sequence>
+			<xsd:element name="player" type="player" minOccurs="0" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element name="coach" type="coach" minOccurs="0" maxOccurs="unbounded">
+			</xsd:element>		
+		</xsd:sequence>	
+	
+		<xsd:attribute name="teamid" type="xsd:long">
+			<xsd:annotation>
+				<xsd:documentation>
+					Internal id for the user table.
+			</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+
+		<xsd:attribute name="name" type="xsd:string" use="required">
+			<xsd:annotation>
+				<xsd:documentation>
+					Team name.
+			</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		
+		<xsd:attribute name="season" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>
+					Season for the team. YYYY - YYYY
+			</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	
+	
+	<xsd:complexType name="player">
+		<xsd:annotation>
+			<xsd:documentation>
+				Represents a team player.
+			</xsd:documentation>
+		</xsd:annotation>
+			<xsd:sequence>
+				<xsd:element name="statistic" type="statistic" minOccurs="0" maxOccurs="unbounded">
+				</xsd:element>
+				<xsd:element name="penalty" type="penalty" minOccurs="0" maxOccurs="unbounded">
+				</xsd:element>		
+			</xsd:sequence>	
+		<xsd:attribute name="playerid" type="xsd:long">
+			<xsd:annotation>
+				<xsd:documentation>
+					Internal id for the player table.
+			</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+
+		<xsd:attribute name="firstName" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>
+					First name of team player.
+			</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		
+		<xsd:attribute name="lastName" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>
+					Last name of team player.
+			</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		
+		<xsd:attribute name="number" type="xsd:long">
+			<xsd:annotation>
+				<xsd:documentation>
+					Team players number.
+			</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		
+		<xsd:attribute name="position" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>
+					Team player position.
+			</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>	
+
+		<xsd:attribute name="active" type="xsd:string">
+			<xsd:annotation>
+				<xsd:documentation>
+					Status.
+			</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>			
+
+	</xsd:complexType>
+	
+	<xsd:complexType name="statistic">
+		<xsd:attribute name="type" type="xsd:string"/>
+		<xsd:attribute name="period" type="xsd:string"/>
+		<xsd:attribute name="timeInPeriod" type="xsd:date"/>
+	</xsd:complexType>	
+	
+	<xsd:complexType name="penalty">
+		<xsd:attribute name="type" type="xsd:string"/>
+		<xsd:attribute name="period" type="xsd:string"/>
+		<xsd:attribute name="timeInPeriod" type="xsd:date"/>
+		<xsd:attribute name="durationInSeconds" type="xsd:long"/>		
+	</xsd:complexType>	
+		
+	<xsd:complexType name="coach">
+		<xsd:annotation>
+			<xsd:documentation>
+				Coach of the team.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="firstName" type="xsd:string"/>
+		<xsd:attribute name="lastName" type="xsd:string"/>
+		<xsd:attribute name="role" type="xsd:string"/>
+
+	</xsd:complexType>	
+	
+	
+	<xsd:complexType name="game">
+		
+		<xsd:sequence>
+			<xsd:element name="team" type="teamType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>	
+		
+		<xsd:attribute name="gameid" type="xsd:long"/>
+		<xsd:attribute name="name" type="xsd:string"/>
+		<xsd:attribute name="datePlayed" type="xsd:date"/>
+
+	</xsd:complexType>	
+	
+</xsd:schema>

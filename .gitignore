@@ -1,0 +1,14 @@
+
+src/main/sql/data.sql
+src/main/sql/lacrosse_db_ddl.sql
+src/test/*
+target/*
+
+
+.project
+
+.classpath
+
+.settings/*
+
+

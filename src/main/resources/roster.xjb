@@ -1,0 +1,11 @@
+<jaxb:bindings
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+    version="2.1">
+    <jaxb:globalBindings localScoping="toplevel"/>
+    <jaxb:bindings schemaLocation="roster.xsd">
+        <jaxb:bindings node="//xsd:complexType[@name='teamType']">
+                <jaxb:class name="Team"/>              
+        </jaxb:bindings>
+    </jaxb:bindings>
+</jaxb:bindings>
